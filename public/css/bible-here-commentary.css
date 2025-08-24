@@ -1,0 +1,461 @@
+/**
+ * Bible Here Commentary Styles
+ *
+ * This file contains all the styles for displaying commentaries on the frontend.
+ *
+ * @link       https://github.com/xjlin0
+ * @since      1.0.0
+ *
+ * @package    Bible_Here
+ * @subpackage Bible_Here/public/css
+ */
+
+/* Commentary Container */
+.bible-commentary-container {
+    margin: 20px 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    line-height: 1.6;
+}
+
+/* Individual Commentary */
+.bible-commentary {
+    background: #fff;
+    border: 1px solid #e1e5e9;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.bible-commentary:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Commentary Header */
+.commentary-header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e1e5e9;
+}
+
+.commentary-reference {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 16px;
+    margin-right: 15px;
+}
+
+.commentary-author {
+    color: #7f8c8d;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.commentary-author::before {
+    content: "by ";
+    font-style: italic;
+}
+
+.commentary-type {
+    background: #3498db;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-right: 10px;
+}
+
+.commentary-type.verse {
+    background: #3498db;
+}
+
+.commentary-type.chapter {
+    background: #e74c3c;
+}
+
+.commentary-type.book {
+    background: #f39c12;
+}
+
+.commentary-type.devotional {
+    background: #9b59b6;
+}
+
+.commentary-language {
+    background: #95a5a6;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+/* Commentary Content */
+.commentary-text {
+    color: #2c3e50;
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.commentary-text p {
+    margin-bottom: 1em;
+}
+
+.commentary-text p:last-child {
+    margin-bottom: 0;
+}
+
+.commentary-text h1,
+.commentary-text h2,
+.commentary-text h3,
+.commentary-text h4,
+.commentary-text h5,
+.commentary-text h6 {
+    color: #2c3e50;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+}
+
+.commentary-text blockquote {
+    margin: 1.5em 0;
+    padding: 0 1.5em;
+    border-left: 4px solid #3498db;
+    color: #7f8c8d;
+    font-style: italic;
+    background: #f8f9fa;
+    border-radius: 0 4px 4px 0;
+}
+
+.commentary-text ul,
+.commentary-text ol {
+    margin: 1em 0;
+    padding-left: 2em;
+}
+
+.commentary-text li {
+    margin-bottom: 0.5em;
+}
+
+.commentary-text strong {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.commentary-text em {
+    font-style: italic;
+    color: #34495e;
+}
+
+/* Commentary Footer */
+.commentary-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #ecf0f1;
+    font-size: 13px;
+    color: #7f8c8d;
+}
+
+.commentary-source {
+    display: flex;
+    align-items: center;
+}
+
+.commentary-source a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.commentary-source a:hover {
+    text-decoration: underline;
+}
+
+.commentary-date {
+    font-size: 12px;
+    color: #95a5a6;
+}
+
+/* Commentary Actions */
+.commentary-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.commentary-action {
+    background: none;
+    border: none;
+    color: #7f8c8d;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 5px 8px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.commentary-action:hover {
+    background: #ecf0f1;
+    color: #2c3e50;
+}
+
+.commentary-action.like {
+    color: #e74c3c;
+}
+
+.commentary-action.share {
+    color: #3498db;
+}
+
+/* Verse Context */
+.verse-context {
+    background: #f8f9fa;
+    border-left: 4px solid #3498db;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 0 4px 4px 0;
+    font-style: italic;
+    color: #34495e;
+    font-family: Georgia, serif;
+}
+
+.verse-context::before {
+    content: '"';
+    font-size: 18px;
+    color: #3498db;
+}
+
+.verse-context::after {
+    content: '"';
+    font-size: 18px;
+    color: #3498db;
+}
+
+/* Commentary List */
+.commentary-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.commentary-list-item {
+    margin-bottom: 20px;
+}
+
+/* Commentary Shortcode Styles */
+.bible-commentary-shortcode {
+    margin: 20px 0;
+}
+
+.bible-commentary-shortcode .commentary-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #3498db;
+}
+
+/* Loading State */
+.commentary-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    color: #7f8c8d;
+    font-style: italic;
+}
+
+.commentary-loading::before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ecf0f1;
+    border-top: 2px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Empty State */
+.commentary-empty {
+    text-align: center;
+    padding: 40px;
+    color: #7f8c8d;
+    font-style: italic;
+}
+
+.commentary-empty::before {
+    content: "📖";
+    font-size: 48px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .bible-commentary {
+        padding: 15px;
+        margin-bottom: 10px;
+    }
+    
+    .commentary-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .commentary-reference {
+        margin-bottom: 8px;
+        margin-right: 0;
+    }
+    
+    .commentary-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .commentary-text {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .bible-commentary-container {
+        margin: 10px 0;
+    }
+    
+    .bible-commentary {
+        padding: 12px;
+        border-radius: 6px;
+    }
+    
+    .commentary-text {
+        font-size: 13px;
+        line-height: 1.6;
+    }
+    
+    .verse-context {
+        padding: 12px;
+        font-size: 13px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .bible-commentary {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        break-inside: avoid;
+    }
+    
+    .commentary-actions {
+        display: none;
+    }
+    
+    .commentary-type,
+    .commentary-language {
+        background: #ccc !important;
+        color: #000 !important;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .bible-commentary {
+        background: #2c3e50;
+        border-color: #34495e;
+        color: #ecf0f1;
+    }
+    
+    .commentary-reference {
+        color: #ecf0f1;
+    }
+    
+    .commentary-text {
+        color: #bdc3c7;
+    }
+    
+    .commentary-text h1,
+    .commentary-text h2,
+    .commentary-text h3,
+    .commentary-text h4,
+    .commentary-text h5,
+    .commentary-text h6 {
+        color: #ecf0f1;
+    }
+    
+    .commentary-text blockquote {
+        background: #34495e;
+        color: #95a5a6;
+    }
+    
+    .verse-context {
+        background: #34495e;
+        color: #bdc3c7;
+    }
+    
+    .commentary-footer {
+        border-top-color: #34495e;
+    }
+    
+    .commentary-action:hover {
+        background: #34495e;
+        color: #ecf0f1;
+    }
+}
+
+/* Accessibility */
+.bible-commentary:focus-within {
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
+}
+
+.commentary-action:focus {
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .bible-commentary {
+        border-width: 2px;
+    }
+    
+    .commentary-type {
+        border: 1px solid currentColor;
+    }
+    
+    .commentary-text blockquote {
+        border-left-width: 6px;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .bible-commentary,
+    .commentary-action,
+    .commentary-loading::before {
+        transition: none;
+        animation: none;
+    }
+}

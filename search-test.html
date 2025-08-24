@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bible Here - Search Function Test</title>
+    <link rel="stylesheet" href="public/css/bible-here-public.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .test-header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        .test-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+        }
+        .test-section h3 {
+            color: #2c5aa0;
+            margin-top: 0;
+        }
+        .search-demo {
+            margin: 20px 0;
+        }
+        .demo-query {
+            background: #f8f9fa;
+            padding: 10px;
+            border-left: 4px solid #2c5aa0;
+            margin: 10px 0;
+            font-family: monospace;
+        }
+        .feature-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .feature-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .feature-list li:before {
+            content: "✓";
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .status-ready { background-color: #28a745; }
+        .status-testing { background-color: #ffc107; }
+        .status-error { background-color: #dc3545; }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h1>Bible Here Plugin - Search Function Test</h1>
+            <p>Testing comprehensive search functionality with advanced features</p>
+        </div>
+
+        <div class="test-section">
+            <h3><span class="status-indicator status-ready"></span>Basic Search Test</h3>
+            <div class="bible-here-search-container">
+                <form class="bible-search-form" id="basic-search-form">
+                    <div class="search-input-container">
+                        <input type="text" 
+                               id="basic-search-input" 
+                               class="bible-search-input" 
+                               placeholder="Search the Bible..." 
+                               autocomplete="off">
+                        <button type="submit" class="bible-search-button">
+                            <span class="search-icon">🔍</span>
+                            Search
+                        </button>
+                    </div>
+                </form>
+                <div id="basic-search-results" class="search-results"></div>
+            </div>
+            <div class="demo-query">Try: "love", "faith", "hope"</div>
+        </div>
+
+        <div class="test-section">
+            <h3><span class="status-indicator status-ready"></span>Advanced Search Test</h3>
+            <div class="bible-here-search-container">
+                <form class="bible-search-form" id="advanced-search-form">
+                    <div class="search-input-container">
+                        <input type="text" 
+                               id="advanced-search-input" 
+                               class="bible-search-input" 
+                               placeholder="Advanced search with filters..." 
+                               autocomplete="off">
+                        <button type="submit" class="bible-search-button">
+                            <span class="search-icon">🔍</span>
+                            Search
+                        </button>
+                    </div>
+                    
+                    <div class="search-filters">
+                        <div class="filter-group">
+                            <label for="version-filter">Version:</label>
+                            <select id="version-filter" class="search-filter">
+                                <option value="">All Versions</option>
+                                <option value="kjv">King James Version</option>
+                                <option value="niv">New International Version</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="book-filter">Book:</label>
+                            <select id="book-filter" class="search-filter">
+                                <option value="">All Books</option>
+                                <option value="1">Genesis</option>
+                                <option value="19">Psalms</option>
+                                <option value="40">Matthew</option>
+                                <option value="43">John</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="search-mode-filter">Search Mode:</label>
+                            <select id="search-mode-filter" class="search-filter">
+                                <option value="fulltext">Full Text</option>
+                                <option value="exact">Exact Match</option>
+                                <option value="phrase">Phrase</option>
+                                <option value="regex">Regular Expression</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="sort-filter">Sort By:</label>
+                            <select id="sort-filter" class="search-filter">
+                                <option value="relevance">Relevance</option>
+                                <option value="book_order">Book Order</option>
+                                <option value="alphabetical">Alphabetical</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+                <div id="advanced-search-results" class="search-results"></div>
+            </div>
+            <div class="demo-query">Try: "love" with different filters, or regex: "love.*neighbor"</div>
+        </div>
+
+        <div class="test-section">
+            <h3><span class="status-indicator status-ready"></span>Search Suggestions Test</h3>
+            <div class="bible-here-search-container">
+                <div class="search-input-container">
+                    <input type="text" 
+                           id="suggestion-search-input" 
+                           class="bible-search-input" 
+                           placeholder="Type to see suggestions..." 
+                           autocomplete="off">
+                    <div id="search-suggestions" class="search-suggestions"></div>
+                </div>
+            </div>
+            <div class="demo-query">Try typing: "lo", "fa", "ho" to see suggestions</div>
+        </div>
+
+        <div class="test-section">
+            <h3><span class="status-indicator status-ready"></span>Search History Test</h3>
+            <div class="bible-here-search-container">
+                <div class="search-history">
+                    <h4>Recent Searches</h4>
+                    <div id="search-history-list" class="search-history-list">
+                        <!-- Search history will be populated here -->
+                    </div>
+                    <button id="clear-history-btn" class="clear-history-btn">Clear History</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3><span class="status-indicator status-ready"></span>Features Implemented</h3>
+            <ul class="feature-list">
+                <li>MySQL Full-text Search with ngram tokenization</li>
+                <li>Advanced search filters (version, book, search mode, sorting)</li>
+                <li>Regular expression search support</li>
+                <li>Search result caching and performance optimization</li>
+                <li>Search suggestions with autocomplete</li>
+                <li>Search history tracking</li>
+                <li>Result pagination and highlighting</li>
+                <li>Responsive design for mobile devices</li>
+                <li>Performance monitoring and statistics</li>
+                <li>Cache management system</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Mock jQuery and WordPress AJAX for testing -->
+    <script>
+        // Mock jQuery for testing
+        if (typeof jQuery === 'undefined') {
+            function MockElement(selector) {
+                this.selector = selector;
+                this.elements = document.querySelectorAll(selector);
+                return this;
+            }
+            
+            MockElement.prototype.on = function(event, handler) {
+                this.elements.forEach(el => el.addEventListener(event, handler));
+                return this;
+            };
+            
+            MockElement.prototype.val = function(value) {
+                if (value !== undefined) {
+                    this.elements.forEach(el => el.value = value);
+                    return this;
+                } else {
+                    return this.elements[0] ? this.elements[0].value : '';
+                }
+            };
+            
+            MockElement.prototype.html = function(content) {
+                if (content !== undefined) {
+                    this.elements.forEach(el => el.innerHTML = content);
+                    return this;
+                } else {
+                    return this.elements[0] ? this.elements[0].innerHTML : '';
+                }
+            };
+            
+            MockElement.prototype.show = function() {
+                this.elements.forEach(el => el.style.display = 'block');
+                return this;
+            };
+            
+            MockElement.prototype.hide = function() {
+                this.elements.forEach(el => el.style.display = 'none');
+                return this;
+            };
+            
+            function $(selector) {
+                 if (typeof selector === 'function') {
+                     // $(document).ready equivalent
+                     if (document.readyState === 'loading') {
+                         document.addEventListener('DOMContentLoaded', selector);
+                     } else {
+                         selector();
+                     }
+                     return;
+                 }
+                 if (selector === document) {
+                     return {
+                         ready: function(fn) {
+                             if (document.readyState === 'loading') {
+                                 document.addEventListener('DOMContentLoaded', fn);
+                             } else {
+                                 fn();
+                             }
+                         }
+                     };
+                 }
+                 return new MockElement(selector);
+             }
+            
+            $.ajax = function(options) {
+                console.log('Mock AJAX call:', options);
+                // Simulate successful response
+                setTimeout(() => {
+                    if (options.success) {
+                        options.success({
+                            success: true,
+                            data: {
+                                results: [
+                                    {
+                                        book_name: 'John',
+                                        chapter_number: 3,
+                                        verse_number: 16,
+                                        verse: 'For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.',
+                                        version: 'KJV',
+                                        relevance_score: 0.95
+                                    },
+                                    {
+                                        book_name: '1 John',
+                                        chapter_number: 4,
+                                        verse_number: 8,
+                                        verse: 'He that loveth not knoweth not God; for God is love.',
+                                        version: 'KJV',
+                                        relevance_score: 0.88
+                                    }
+                                ],
+                                total_results: 2,
+                                page: 1,
+                                total_pages: 1
+                            }
+                        });
+                    }
+                }, 500);
+            };
+            
+            window.jQuery = window.$ = $;
+        }
+
+        // Mock WordPress AJAX object
+        window.bible_here_ajax = {
+            ajax_url: '/wp-admin/admin-ajax.php',
+            nonce: 'mock_nonce_12345'
+        };
+
+        // Initialize when DOM is ready
+        $(document).ready(function() {
+            console.log('Bible Here Search Test Page Loaded');
+            
+            // Test basic functionality
+            $('#basic-search-form').on('submit', function(e) {
+                e.preventDefault();
+                const query = $('#basic-search-input').val();
+                console.log('Basic search for:', query);
+                
+                $('#basic-search-results').html('<div class="loading">Searching...</div>');
+                
+                // Simulate search
+                setTimeout(() => {
+                    $('#basic-search-results').html(`
+                        <div class="search-result-item">
+                            <div class="verse-reference">John 3:16 (KJV)</div>
+                            <div class="verse-text">For God so <mark>loved</mark> the world, that he gave his only begotten Son...</div>
+                        </div>
+                        <div class="search-result-item">
+                            <div class="verse-reference">1 John 4:8 (KJV)</div>
+                            <div class="verse-text">He that <mark>loveth</mark> not knoweth not God; for God is <mark>love</mark>.</div>
+                        </div>
+                    `);
+                }, 1000);
+            });
+            
+            // Test advanced search
+            $('#advanced-search-form').on('submit', function(e) {
+                e.preventDefault();
+                const query = $('#advanced-search-input').val();
+                const version = $('#version-filter').val();
+                const book = $('#book-filter').val();
+                const mode = $('#search-mode-filter').val();
+                const sort = $('#sort-filter').val();
+                
+                console.log('Advanced search:', { query, version, book, mode, sort });
+                
+                $('#advanced-search-results').html('<div class="loading">Searching with filters...</div>');
+                
+                setTimeout(() => {
+                    $('#advanced-search-results').html(`
+                        <div class="search-stats">Found 2 results in 0.045 seconds</div>
+                        <div class="search-result-item">
+                            <div class="verse-reference">John 3:16 (KJV) - Relevance: 95%</div>
+                            <div class="verse-text">For God so <mark>loved</mark> the world...</div>
+                        </div>
+                        <div class="search-pagination">
+                            <button class="page-btn active">1</button>
+                        </div>
+                    `);
+                }, 1000);
+            });
+            
+            // Test suggestions
+            $('#suggestion-search-input').on('input', function() {
+                const query = $(this).val();
+                if (query.length >= 2) {
+                    $('#search-suggestions').html(`
+                        <div class="suggestion-item">love</div>
+                        <div class="suggestion-item">lord</div>
+                        <div class="suggestion-item">life</div>
+                    `).show();
+                } else {
+                    $('#search-suggestions').hide();
+                }
+            });
+            
+            // Test history
+            $('#search-history-list').html(`
+                <div class="history-item">love <span class="history-time">2 minutes ago</span></div>
+                <div class="history-item">faith <span class="history-time">5 minutes ago</span></div>
+                <div class="history-item">hope <span class="history-time">10 minutes ago</span></div>
+            `);
+            
+            $('#clear-history-btn').on('click', function() {
+                $('#search-history-list').html('<div class="no-history">No search history</div>');
+                console.log('Search history cleared');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -90,6 +90,11 @@ class Bible_Here {
 	 * - Bible_Here_i18n. Defines internationalization functionality.
 	 * - Bible_Here_Admin. Defines all hooks for the admin area.
 	 * - Bible_Here_Public. Defines all hooks for the public side of the site.
+	 * - Bible_Here_Database. Handles database operations.
+	 * - Bible_Here_Bible_Service. Provides Bible content services.
+	 * - Bible_Here_Book_Manager. Manages Bible books.
+	 * - Bible_Here_Verse_Manager. Manages Bible verses.
+	 * - Bible_Here_Data_Importer. Handles data import functionality.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -110,6 +115,51 @@ class Bible_Here {
 		 * of the plugin.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-bible-here-i18n.php';
+
+		/**
+		 * The class responsible for database operations.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-bible-here-database.php';
+
+		/**
+		 * The class responsible for Bible content services.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-bible-here-bible-service.php';
+
+		/**
+		 * The class responsible for managing Bible books.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-bible-here-book-manager.php';
+
+		/**
+		 * The class responsible for managing Bible verses.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-bible-here-verse-manager.php';
+
+		/**
+		 * The class responsible for data import functionality.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-bible-here-data-importer.php';
+
+		/**
+		 * The class responsible for managing commentaries.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-bible-here-commentary-manager.php';
+
+		/**
+		 * The class responsible for displaying commentaries on the frontend.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-bible-here-commentary-display.php';
+
+		/**
+		 * The class responsible for managing cross references.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-bible-here-cross-reference-manager.php';
+
+		/**
+		 * The class responsible for displaying cross references on the frontend.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-bible-here-cross-reference-display.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
